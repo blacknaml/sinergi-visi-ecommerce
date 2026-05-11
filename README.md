@@ -1,58 +1,161 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SinergiVisi Ecommerce
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Platform e-commerce premium untuk penjualan produk pecah belah, dilengkapi dengan sistem manajemen pesanan, multi-gambar produk, dan integrasi MCP API untuk AI Customer Support.
 
-## About Laravel
+## 🧱 Tech Stack
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+| Layer | Teknologi |
+|---|---|
+| Backend | Laravel 11 (PHP) |
+| Frontend | React 19 + Inertia.js |
+| Styling | Tailwind CSS (Glassmorphism design) |
+| Database | SQLite / MySQL |
+| Auth | Laravel Breeze + Session-based |
+| File Storage | Laravel Local Storage (`storage/app/public`) |
+| API | Laravel REST API (MCP endpoints) |
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Fitur Utama
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🛍️ Pembeli (Buyer)
+- **Katalog Produk** — Tampilan kartu produk dengan gambar utama, harga, dan kategori.
+- **Detail Produk** — Galeri multi-gambar dengan thumbnail yang bisa diklik, deskripsi, dan tombol "Tambah ke Keranjang".
+- **Keranjang Belanja** — Manajemen item sebelum checkout, dapat diakses dari Navbar.
+- **Checkout** — Pilih alamat pengiriman dan metode pembayaran.
+- **Riwayat Pesanan** — Daftar seluruh pesanan beserta status terkini.
+- **Detail Pesanan** — Rincian produk, total, alamat, dan **Timeline Riwayat Status** (Pending → Shipped → Done).
 
-## Learning Laravel
+### 🔧 Admin / Seller
+- **Dashboard Admin** — Statistik toko (pengguna, produk, pesanan, klaim) + daftar pesanan terbaru.
+- **Manajemen Produk** — CRUD produk dengan dukungan **upload multi-gambar** dan pemilihan gambar utama.
+- **Manajemen Pengguna** — Daftar akun buyer terdaftar.
+- **Detail Pesanan Admin** — Lihat rincian pesanan milik pembeli mana pun + **ubah status** secara langsung via dropdown.
+- **Laporan & Transaksi** — Ringkasan semua transaksi dan klaim refund.
+- **Riwayat Status Pesanan** — Setiap perubahan status tercatat otomatis dengan waktu dan catatan.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🔌 MCP API (untuk AI Customer Support)
+Endpoint publik untuk dikonsumsi oleh sistem AI eksternal (`sinergi-visi-ai`):
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Endpoint | Deskripsi |
+|---|---|
+| `GET /api/mcp/products` | Daftar semua produk beserta gambar dan kategori |
+| `GET /api/mcp/orders` | Daftar semua pesanan beserta item, pembeli, dan riwayat |
+| `GET /api/mcp/orders/{orderNumber}` | Detail pesanan spesifik berdasarkan nomor order (format: `ORD-XXXX`) |
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+**URL Storage Gambar:** `http://127.0.0.1:8001/storage/{image_path}`
 
-## Agentic Development
+## 🚀 Cara Menjalankan
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### Prasyarat
+- PHP >= 8.2
+- Composer
+- Node.js >= 18 + npm/pnpm
+- SQLite atau MySQL
+
+### Instalasi
 
 ```bash
-composer require laravel/boost --dev
+# 1. Clone & masuk ke direktori
+cd sinergi-visi-ecommerce
 
-php artisan boost:install
+# 2. Install dependensi PHP
+composer install
+
+# 3. Salin file konfigurasi
+cp .env.example .env
+
+# 4. Generate app key
+php artisan key:generate
+
+# 5. Setup database (SQLite)
+touch database/database.sqlite
+php artisan migrate --seed
+
+# 6. Buat symlink storage (agar gambar bisa diakses publik)
+php artisan storage:link
+
+# 7. Install dependensi JavaScript
+npm install
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### Menjalankan Server
 
-## Contributing
+```bash
+# Terminal 1 — Laravel Backend
+php artisan serve --port=8001
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Terminal 2 — Vite Dev Server (React/Inertia)
+npm run dev
+```
 
-## Code of Conduct
+Akses aplikasi di: **http://127.0.0.1:8001**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 👤 Akun Default (Setelah Seeding)
 
-## Security Vulnerabilities
+| Role | Email | Password |
+|---|---|---|
+| Seller/Admin | admin@sinergivisi.com | password |
+| Buyer | buyer@sinergivisi.com | password |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+> Sesuaikan dengan konfigurasi seeder yang digunakan di `database/seeders/`.
 
-## License
+## 📁 Struktur Direktori Penting
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+app/
+├── Http/Controllers/
+│   ├── AdminController.php      # Manajemen admin (produk, user, pesanan)
+│   ├── CartController.php       # Keranjang belanja
+│   ├── CheckoutController.php   # Proses checkout & pembuatan pesanan
+│   ├── OrderController.php      # Pesanan pembeli + pembatalan
+│   ├── DashboardController.php  # Dashboard buyer & seller
+│   └── Api/McpController.php   # MCP API endpoints
+├── Models/
+│   ├── Product.php              # Produk + relasi images + accessor main_image
+│   ├── Order.php                # Pesanan + relasi histories
+│   └── OrderHistory.php        # Log riwayat status pesanan
+
+resources/js/
+├── Pages/
+│   ├── Auth/                   # Login & Register (Glassmorphism design)
+│   ├── Dashboard.jsx            # Dashboard pembeli
+│   ├── Products/               # Katalog & detail produk
+│   ├── Cart/                   # Keranjang belanja
+│   ├── Orders/                 # Daftar & detail pesanan pembeli
+│   └── Admin/                  # Halaman-halaman panel admin
+├── Layouts/
+│   ├── AuthenticatedLayout.jsx  # Layout utama buyer (navbar + cart icon)
+│   ├── GuestLayout.jsx          # Layout halaman login/register
+│   └── AdminLayout.jsx          # Layout panel admin
+└── Components/
+    ├── Navbar.jsx               # Navigasi publik
+    └── ProductCard.jsx          # Kartu produk di katalog
+
+database/migrations/
+├── ...orders_table.php
+├── ...order_items_table.php
+├── ...product_images_table.php  # Multi-gambar produk
+└── ...order_histories_table.php # Riwayat status pesanan
+```
+
+## 🗂️ Database Schema (Tabel Utama)
+
+- **users** — Akun pembeli & penjual (`role`: buyer / seller)
+- **products** — Data produk (nama, harga, stok, kategori)
+- **product_images** — Galeri gambar produk (relasi ke products, flag `is_main`)
+- **orders** — Data pesanan (`status`: pending / shipped / done / cancelled)
+- **order_items** — Item-item dalam pesanan
+- **order_histories** — Log riwayat perubahan status pesanan
+- **addresses** — Alamat pengiriman milik pembeli
+- **cart_items** — Item keranjang belanja
+- **claims** — Klaim kerusakan barang
+
+## 🔗 Integrasi dengan SinergiVisi AI
+
+Proyek ini terhubung dengan sistem AI di `sinergi-visi-ai` yang berjalan di port berbeda. Sistem AI mengonsumsi MCP API di atas untuk:
+- Memvalidasi nomor pesanan saat pelanggan mengajukan komplain.
+- Mengambil foto produk asli dari `/storage/` untuk dianalisis via Gemini Vision API.
+- Mencatat dan mengelola klaim kerusakan barang.
+
+## 📄 Lisensi
+
+Proyek ini dikembangkan untuk kebutuhan internal SinergiVisi.
