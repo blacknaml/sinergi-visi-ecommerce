@@ -31,4 +31,27 @@ class McpController extends Controller
 
         return response()->json($order);
     }
+
+    public function storeClaim(Request $request)
+    {
+        $validated = $request->validate([
+            'order_number' => 'required|string|exists:orders,order_number',
+            'reason' => 'required|string',
+            'type' => 'required|in:refund,claim',
+            'status' => 'nullable|string'
+        ]);
+
+        $order = Order::where('order_number', $validated['order_number'])->first();
+
+        $claim = $order->claim()->create([
+            'reason' => $validated['reason'],
+            'type' => $validated['type'],
+            'status' => $validated['status'] ?? 'pending'
+        ]);
+
+        return response()->json([
+            'message' => 'Klaim berhasil dicatat ke sistem eCommerce.',
+            'claim' => $claim
+        ], 201);
+    }
 }

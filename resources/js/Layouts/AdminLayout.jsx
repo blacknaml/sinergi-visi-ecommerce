@@ -9,6 +9,7 @@ export default function AdminLayout({ auth, children }) {
         { name: 'Manajemen User', routeName: 'admin.users', href: route('admin.users'), icon: 'users' },
         { name: 'Manajemen Produk', routeName: 'admin.products', href: route('admin.products'), icon: 'package' },
         { name: 'Laporan', routeName: 'admin.reports', href: route('admin.reports'), icon: 'file-text' },
+        { name: 'Laporan Claim', routeName: 'admin.claims', href: route('admin.claims'), icon: 'alert-circle' },
     ];
 
     return (

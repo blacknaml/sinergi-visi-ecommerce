@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/admin/products/{id}', [AdminController::class, 'productDestroy'])->name('admin.products.destroy');
         Route::delete('/admin/products/images/{imageId}', [AdminController::class, 'productImageDestroy'])->name('admin.products.images.destroy');
         Route::get('/admin/reports', [AdminController::class, 'reports'])->name('admin.reports');
+        Route::get('/admin/claims', [AdminController::class, 'claims'])->name('admin.claims');
     });
 });
 

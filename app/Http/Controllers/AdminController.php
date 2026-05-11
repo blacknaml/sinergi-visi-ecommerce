@@ -130,7 +130,14 @@ class AdminController extends Controller
     {
         return Inertia::render('Admin/Reports/Index', [
             'orders' => Order::with('user')->latest()->get(),
-            'claims' => Claim::with(['order', 'user'])->latest()->get()
+            'claims' => Claim::with(['order.user'])->latest()->get()
+        ]);
+    }
+
+    public function claims()
+    {
+        return Inertia::render('Admin/Claims/Index', [
+            'claims' => Claim::with(['order.user'])->latest()->get()
         ]);
     }
 

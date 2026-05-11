@@ -14,4 +14,5 @@ Route::middleware([McpAuthMiddleware::class])->group(function () {
     Route::get('/mcp/products', [McpController::class, 'products']);
     Route::get('/mcp/orders', [McpController::class, 'orders']);
     Route::get('/mcp/orders/{orderNumber}', [McpController::class, 'orderByNumber']);
+    Route::post('/mcp/claims', [McpController::class, 'storeClaim']);
 });
