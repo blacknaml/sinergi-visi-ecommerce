@@ -29,7 +29,7 @@ export default function Welcome({ auth, products, categories }) {
                         <div className="mt-10 flex items-center justify-center gap-x-6">
                             <Link
                                 href={route('products.index')}
-                                className="rounded-2xl bg-blue-600 px-8 py-4 text-lg font-black text-white shadow-xl shadow-blue-200 transition-all hover:bg-blue-700 hover:shadow-blue-300 active:scale-95"
+                                className="rounded-2xl bg-blue-600 px-8 py-4 text-lg font-black text-white transition-all hover:bg-blue-700 active:scale-95"
                             >
                                 Lihat Produk
                             </Link>

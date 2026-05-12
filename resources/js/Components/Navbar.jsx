@@ -7,7 +7,7 @@ export default function Navbar({ auth }) {
                 <div className="flex h-16 items-center justify-between">
                     <div className="flex items-center">
                         <Link href="/" className="flex items-center gap-2">
-                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-lg shadow-blue-200">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-sm shadow-blue-200">
                                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                                 </svg>
@@ -49,7 +49,7 @@ export default function Navbar({ auth }) {
                                 </Link>
                                 <Link
                                     href={route('register')}
-                                    className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-2 text-sm font-bold text-white shadow-lg shadow-blue-200 transition-all hover:bg-blue-700 hover:shadow-blue-300 active:scale-95"
+                                    className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-2 text-sm font-bold text-white transition-all hover:bg-blue-700 active:scale-95"
                                 >
                                     Daftar
                                 </Link>
