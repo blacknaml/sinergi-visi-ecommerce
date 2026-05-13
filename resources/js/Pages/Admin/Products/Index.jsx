@@ -66,6 +66,22 @@ export default function Index({ auth, products, categories }) {
         }
     };
 
+    const deleteImage = (imageId) => {
+        if (window.confirm('Apakah Anda yakin ingin menghapus gambar ini?')) {
+            router.delete(route('admin.products.images.destroy', imageId), {
+                onSuccess: () => {
+                    // Update editingProduct state to remove the deleted image from UI
+                    if (editingProduct) {
+                        setEditingProduct({
+                            ...editingProduct,
+                            images: editingProduct.images.filter(img => img.id !== imageId)
+                        });
+                    }
+                }
+            });
+        }
+    };
+
     return (
         <AdminLayout auth={auth}>
             <Head title="Manajemen Produk" />
@@ -248,6 +264,17 @@ export default function Index({ auth, products, categories }) {
                                     )) : null}
                                 </select>
                                 {errors.category_id && <p className="mt-1 text-xs text-red-500">{errors.category_id}</p>}
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Deskripsi</label>
+                                <textarea
+                                    value={data.description}
+                                    onChange={(e) => setData('description', e.target.value)}
+                                    rows="3"
+                                    className="mt-1 w-full rounded-xl border-gray-200 dark:border-gray-800 dark:bg-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                                    placeholder="Tulis deskripsi produk di sini..."
+                                ></textarea>
+                                {errors.description && <p className="mt-1 text-xs text-red-500">{errors.description}</p>}
                             </div>
                             <div className="flex justify-end gap-3 pt-4">
                                 <button

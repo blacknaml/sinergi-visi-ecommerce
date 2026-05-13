@@ -43,6 +43,10 @@ class AdminController extends Controller
                     'image_path' => $path,
                     'is_main' => ($index == $mainIndex)
                 ]);
+
+                if ($index == $mainIndex) {
+                    $product->update(['image_path' => $path]);
+                }
             }
         }
 
@@ -78,10 +82,14 @@ class AdminController extends Controller
         // Set main image
         if ($request->filled('main_image_id')) {
             $product->images()->update(['is_main' => false]);
-            $product->images()->where('id', $request->main_image_id)->update(['is_main' => true]);
+            $mainImage = $product->images()->findOrFail($request->main_image_id);
+            $mainImage->update(['is_main' => true]);
+            $product->update(['image_path' => $mainImage->image_path]);
         } else if ($product->images()->count() > 0 && !$product->images()->where('is_main', true)->exists()) {
             // Ensure at least one is main if there are images
-            $product->images()->first()->update(['is_main' => true]);
+            $mainImage = $product->images()->first();
+            $mainImage->update(['is_main' => true]);
+            $product->update(['image_path' => $mainImage->image_path]);
         }
 
         return back();
@@ -108,9 +116,13 @@ class AdminController extends Controller
 
         // If main image was deleted, set another one as main
         if ($wasMain) {
+            $product = Product::find($productId);
             $newMain = \App\Models\ProductImage::where('product_id', $productId)->first();
             if ($newMain) {
                 $newMain->update(['is_main' => true]);
+                $product->update(['image_path' => $newMain->image_path]);
+            } else {
+                $product->update(['image_path' => null]);
             }
         }
 
