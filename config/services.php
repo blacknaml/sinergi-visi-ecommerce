@@ -39,4 +39,8 @@ return [
         'token' => env('MCP_API_TOKEN'),
     ],
 
+    'cs' => [
+        'endpoint' => env('CS_ENDPOINT'),
+    ],
+
 ];
