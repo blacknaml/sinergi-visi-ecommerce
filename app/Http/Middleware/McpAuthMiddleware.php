@@ -16,7 +16,7 @@ class McpAuthMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $token = $request->header('X-MCP-Token');
-        $expectedToken = env('MCP_API_TOKEN');
+        $expectedToken = config('services.mcp.token');
 
         if (!$token || $token !== $expectedToken) {
             return response()->json([
