@@ -7,7 +7,7 @@ Dokumen ini menjelaskan struktur arsitektur, tumpukan teknologi (tech stack), da
 Sinergi Visi Ecommerce adalah platform perdagangan elektronik modern yang dibangun dengan arsitektur **Monolith (Hybrid)**. Aplikasi ini menggunakan Laravel sebagai inti (core) backend dan React sebagai layer frontend melalui Inertia.js. Selain itu, sistem ini memiliki integrasi AI melalui **Model Context Protocol (MCP)**.
 
 ### Diagram Arsitektur Utama
-![System Architecture Diagram](/public/images/architecture/system_architecture.png)
+![System Architecture Diagram](public/images/architecture/system_architecture.png)
 
 ---
 
@@ -30,7 +30,7 @@ Sinergi Visi Ecommerce adalah platform perdagangan elektronik modern yang dibang
 Salah satu fitur unik dari sistem ini adalah **Sinergi Visi MCP Bridge**. Ini memungkinkan asisten AI (seperti Claude) untuk berinteraksi langsung dengan database ecommerce (produk, pesanan, dan klaim).
 
 ### Aliran Data AI
-![AI Data Flow Sequence Diagram](/public/images/architecture/ai_data_flow.png)
+![AI Data Flow Sequence Diagram](public/images/architecture/ai_data_flow.png)
 
 **Tools yang tersedia di MCP:**
 - `get_products`: Mengambil katalog produk.
