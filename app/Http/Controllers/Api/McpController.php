@@ -49,6 +49,14 @@ class McpController extends Controller
             'status' => $validated['status'] ?? 'pending'
         ]);
 
+        if ($validated['type'] === 'refund' && ($validated['status'] ?? 'pending') === 'completed') {
+            $order->update(['status' => 'refund']);
+            $order->histories()->create([
+                'status' => 'refund',
+                'notes' => 'Status pesanan diubah menjadi refund karena klaim telah selesai.'
+            ]);
+        }
+
         return response()->json([
             'message' => 'Klaim berhasil dicatat ke sistem eCommerce.',
             'claim' => $claim
