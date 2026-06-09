@@ -4,41 +4,41 @@ import ProductCard from '@/Components/ProductCard';
 
 export default function Welcome({ auth, products, categories, cs_endpoint }) {
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-            <Head title="Welcome" />
-            
+        <div className="min-h-screen bg-brand-ivory dark:bg-brand-charcoal">
+            <Head title="Sinergi Visi — Fine Glassware & Ceramics" />
+
             <Navbar auth={auth} />
 
             {/* Hero Section */}
-            <div className="relative overflow-hidden pt-16 pb-20">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full opacity-20 pointer-events-none">
-                    <div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
-                    <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-400 rounded-full blur-3xl animate-pulse delay-700"></div>
+            <div className="relative overflow-hidden pt-20 pb-28">
+                <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-0 left-0 w-[40rem] h-[40rem] bg-brand-gold/10 dark:bg-brand-gold/5 rounded-full blur-3xl -translate-x-1/3 -translate-y-1/4"></div>
+                    <div className="absolute bottom-0 right-0 w-[40rem] h-[40rem] bg-brand-sand/30 dark:bg-brand-gold/5 rounded-full blur-3xl translate-x-1/4 translate-y-1/4"></div>
                 </div>
 
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
                     <div className="text-center">
-                        <h1 className="text-5xl font-black tracking-tight text-gray-900 sm:text-7xl dark:text-white">
-                            Sinergi Visi <br />
-                            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Pecah Belah Dapur</span>
+                        <p className="text-xs font-semibold tracking-widest uppercase text-brand-gold mb-4">Fine Glassware & Ceramics</p>
+                        <h1 className="font-serif text-5xl font-bold tracking-tight text-brand-charcoal sm:text-7xl dark:text-brand-ivory leading-tight">
+                            Seni Meja Makan <br />
+                            <span className="italic text-brand-gold">yang Sesungguhnya</span>
                         </h1>
-                        <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-400">
-                            Temukan koleksi perlengkapan dapur berkualitas tinggi dari Kitchenware hingga Ceramicware. 
-                            Desain elegan untuk melengkapi estetika rumah Anda.
+                        <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-brand-stone dark:text-brand-ivory/60">
+                            Temukan koleksi pecah belah premium — dari glassware kristal jernih hingga ceramicware kerajinan tangan. Setiap produk adalah karya seni untuk meja makan Anda.
                         </p>
                         <div className="mt-10 flex items-center justify-center gap-x-6">
                             <Link
                                 href={route('products.index')}
-                                className="rounded-2xl bg-blue-600 px-8 py-4 text-lg font-black text-white transition-all hover:bg-blue-700 active:scale-95 shadow-lg shadow-blue-500/30"
+                                className="rounded-xl bg-brand-gold px-8 py-4 text-base font-bold text-white transition-all hover:bg-brand-gold-dark active:scale-[0.98] shadow-lg shadow-brand-gold/20"
                             >
-                                Lihat Produk
+                                Lihat Koleksi
                             </Link>
                             {!auth.user && (
                                 <Link
                                     href={route('register')}
-                                    className="text-lg font-bold leading-6 text-gray-900 dark:text-white"
+                                    className="text-base font-semibold leading-6 text-brand-charcoal/70 dark:text-brand-ivory/70 border-b border-brand-stone/30 hover:border-brand-gold hover:text-brand-gold transition-all"
                                 >
-                                    Gabung Sekarang <span aria-hidden="true">→</span>
+                                    Bergabung Sekarang <span aria-hidden="true">→</span>
                                 </Link>
                             )}
                         </div>
@@ -47,51 +47,51 @@ export default function Welcome({ auth, products, categories, cs_endpoint }) {
             </div>
 
             {/* Trust Bar Section */}
-            <div className="bg-white dark:bg-gray-900 border-y border-gray-100 dark:border-gray-800">
+            <div className="bg-white dark:bg-brand-charcoal/50 border-y border-brand-border dark:border-brand-charcoal/30">
                 <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
                         {[
                             {
                                 title: 'Pengiriman Cepat',
-                                desc: 'Kurir terpercaya untuk Anda.',
+                                desc: 'Dikemas dengan standar packing premium.',
                                 icon: (
-                                    <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    <svg className="w-7 h-7 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
                                     </svg>
                                 ),
                             },
                             {
                                 title: 'Pembayaran Aman',
-                                desc: 'Transaksi terenkripsi & aman.',
+                                desc: 'Transaksi terenkripsi & terpercaya.',
                                 icon: (
-                                    <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                    <svg className="w-7 h-7 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                                     </svg>
                                 ),
                             },
                             {
                                 title: 'Dukungan 24/7',
-                                desc: 'Kami siap membantu Anda.',
+                                desc: 'Tim ahli kami siap melayani Anda.',
                                 icon: (
-                                    <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                                    <svg className="w-7 h-7 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
                                     </svg>
                                 ),
                             },
                             {
-                                title: 'Produk Original',
-                                desc: 'Kualitas 100% terjamin asli.',
+                                title: 'Kualitas Terjamin',
+                                desc: 'Setiap produk dikurasi dengan ketat.',
                                 icon: (
-                                    <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                                    <svg className="w-7 h-7 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                                     </svg>
                                 ),
                             },
                         ].map((item, i) => (
                             <div key={i} className="flex flex-col items-center text-center">
-                                <div className="mb-4 rounded-2xl bg-blue-50 p-3 dark:bg-blue-900/20">{item.icon}</div>
-                                <h3 className="text-lg font-bold text-gray-900 dark:text-white">{item.title}</h3>
-                                <p className="text-sm text-gray-600 dark:text-gray-400">{item.desc}</p>
+                                <div className="mb-4 rounded-2xl bg-brand-sand p-3 dark:bg-brand-charcoal/50">{item.icon}</div>
+                                <h3 className="text-base font-bold text-brand-charcoal dark:text-brand-ivory">{item.title}</h3>
+                                <p className="text-sm text-brand-stone dark:text-brand-ivory/50">{item.desc}</p>
                             </div>
                         ))}
                     </div>
@@ -101,25 +101,26 @@ export default function Welcome({ auth, products, categories, cs_endpoint }) {
             {/* Featured Categories */}
             <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
                 <div className="mb-12 text-center">
-                    <h2 className="text-3xl font-black text-gray-900 dark:text-white sm:text-4xl">Kategori Pilihan</h2>
-                    <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">Jelajahi berbagai koleksi terbaik kami untuk kebutuhan Anda.</p>
+                    <p className="text-xs font-semibold tracking-widest uppercase text-brand-gold mb-3">Koleksi Kami</p>
+                    <h2 className="font-serif text-3xl font-bold text-brand-charcoal dark:text-brand-ivory sm:text-4xl">Kategori Pilihan</h2>
+                    <p className="mt-4 text-base text-brand-stone dark:text-brand-ivory/50">Jelajahi berbagai koleksi eksklusif kami untuk memperindah meja makan Anda.</p>
                 </div>
 
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {[
                         { name: 'Peralatan Dapur', image: '/images/landing/cat-kitchenware.png', count: '120+ Produk' },
                         { name: 'Keramik', image: '/images/landing/cat-ceramicware.png', count: '80+ Produk' },
                         { name: 'Peralatan Kaca', image: '/images/landing/cat-glassware.png', count: '60+ Produk' },
                         { name: 'Alat Makan', image: '/images/landing/cat-cutlery.png', count: '150+ Produk' },
                     ].map((cat, i) => (
-                        <div key={i} className="group relative overflow-hidden rounded-3xl bg-white shadow-lg transition-all hover:-translate-y-2 dark:bg-gray-900">
-                            <div className="aspect-h-1 aspect-w-1 h-64 overflow-hidden">
-                                <img src={cat.image} alt={cat.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                        <div key={i} className="group relative overflow-hidden rounded-2xl bg-white border border-brand-border shadow-sm transition-all hover:-translate-y-1 hover:shadow-md hover:shadow-brand-gold/10">
+                            <div className="h-64 overflow-hidden">
+                                <img src={cat.image} alt={cat.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-brand-charcoal/70 to-transparent" />
                             </div>
-                            <div className="absolute bottom-0 p-6">
-                                <h3 className="text-xl font-bold text-white">{cat.name}</h3>
-                                <p className="text-sm text-gray-300">{cat.count}</p>
+                            <div className="absolute bottom-0 p-5">
+                                <h3 className="text-lg font-bold text-white">{cat.name}</h3>
+                                <p className="text-xs font-semibold tracking-wider uppercase text-brand-gold/80">{cat.count}</p>
                             </div>
                         </div>
                     ))}
@@ -127,52 +128,57 @@ export default function Welcome({ auth, products, categories, cs_endpoint }) {
             </div>
 
             {/* Featured Products */}
-            <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-950 rounded-[3rem]">
-                <div className="mb-12 flex items-end justify-between px-4">
-                    <div>
-                        <h2 className="text-3xl font-black text-gray-900 dark:text-white">Produk Unggulan</h2>
-                        <p className="mt-2 text-gray-600 dark:text-gray-400">Pilihan terbaik untuk melengkapi dapur Anda.</p>
+            <div className="bg-brand-sand dark:bg-brand-charcoal/30 py-24">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div className="mb-12 flex items-end justify-between">
+                        <div>
+                            <p className="text-xs font-semibold tracking-widest uppercase text-brand-gold mb-2">Pilihan Editor</p>
+                            <h2 className="font-serif text-3xl font-bold text-brand-charcoal dark:text-brand-ivory">Produk Unggulan</h2>
+                            <p className="mt-2 text-brand-stone dark:text-brand-ivory/50">Kurasi terbaik untuk melengkapi dapur Anda.</p>
+                        </div>
+                        <Link
+                            href={route('products.index')}
+                            className="text-sm font-bold text-brand-gold hover:text-brand-gold-dark border-b border-brand-gold/30 hover:border-brand-gold transition-all"
+                        >
+                            Lihat Semua →
+                        </Link>
                     </div>
-                    <Link
-                        href={route('products.index')}
-                        className="text-sm font-bold text-blue-600 hover:text-blue-700 bg-blue-50 dark:bg-blue-900/20 px-4 py-2 rounded-full"
-                    >
-                        Lihat Semua →
-                    </Link>
-                </div>
 
-                <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 px-4">
-                    {products.map((product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                        {products.map((product) => (
+                            <ProductCard key={product.id} product={product} />
+                        ))}
+                    </div>
                 </div>
             </div>
 
             {/* How It Works Section */}
-            <div className="relative overflow-hidden py-24 sm:py-32">
+            <div className="py-24 sm:py-32">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:items-center lg:gap-x-16">
+                    <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:items-center lg:gap-x-20">
                         <div>
-                            <h2 className="text-3xl font-black tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-                                Bagaimana Cara Berbelanja di <span className="text-blue-600">Sinergi Visi?</span>
+                            <p className="text-xs font-semibold tracking-widest uppercase text-brand-gold mb-4">Panduan Berbelanja</p>
+                            <h2 className="font-serif text-3xl font-bold tracking-tight text-brand-charcoal dark:text-brand-ivory sm:text-4xl">
+                                Belanja di Sinergi Visi, <br />
+                                <span className="italic text-brand-gold">semudah menikmati makan malam.</span>
                             </h2>
-                            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
-                                Proses belanja yang mudah dan transparan untuk memastikan Anda mendapatkan produk terbaik dengan pengalaman terbaik.
+                            <p className="mt-6 text-base leading-8 text-brand-stone dark:text-brand-ivory/50">
+                                Pengalaman berbelanja yang elegan dan mudah dari kurasi koleksi pilihan kami hingga produk tiba di tangan Anda.
                             </p>
                             <div className="mt-10 space-y-8">
                                 {[
-                                    { title: 'Pilih Produk', desc: 'Telusuri katalog lengkap kami dan temukan produk favorit Anda.' },
-                                    { title: 'Masukkan Keranjang', desc: 'Pilih variasi produk dan masukkan ke dalam keranjang belanja.' },
-                                    { title: 'Pembayaran Aman', desc: 'Selesaikan transaksi dengan berbagai metode pembayaran yang tersedia.' },
-                                    { title: 'Terima Barang', desc: 'Duduk santai, pesanan Anda akan segera sampai di depan pintu.' },
+                                    { title: 'Pilih Produk', desc: 'Telusuri koleksi eksklusif kami dan temukan produk yang sempurna.' },
+                                    { title: 'Masukkan Keranjang', desc: 'Pilih variasi dan jumlah yang Anda inginkan dengan mudah.' },
+                                    { title: 'Pembayaran Aman', desc: 'Selesaikan transaksi dengan metode pembayaran pilihan Anda.' },
+                                    { title: 'Terima Barang', desc: 'Pesanan dikemas premium dan diantarkan langsung ke pintu Anda.' },
                                 ].map((step, i) => (
                                     <div key={i} className="flex gap-x-6">
-                                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 text-white font-black">
-                                            {i + 1}
+                                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-brand-gold text-brand-gold font-bold text-sm">
+                                            {String(i + 1).padStart(2, '0')}
                                         </div>
                                         <div>
-                                            <h3 className="text-lg font-bold text-gray-900 dark:text-white">{step.title}</h3>
-                                            <p className="mt-1 text-gray-600 dark:text-gray-400">{step.desc}</p>
+                                            <h3 className="text-base font-bold text-brand-charcoal dark:text-brand-ivory">{step.title}</h3>
+                                            <p className="mt-1 text-sm text-brand-stone dark:text-brand-ivory/50">{step.desc}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -182,41 +188,44 @@ export default function Welcome({ auth, products, categories, cs_endpoint }) {
                             <img
                                 src="/images/landing/how-it-works.png"
                                 alt="Shopping Experience"
-                                className="w-full rounded-3xl shadow-2xl ring-1 ring-gray-900/10 dark:ring-white/10"
+                                className="w-full rounded-2xl shadow-xl shadow-brand-gold/10 ring-1 ring-brand-border"
                             />
-                            <div className="absolute -bottom-6 -left-6 h-32 w-32 rounded-3xl bg-blue-600/10 blur-3xl" />
+                            <div className="absolute -bottom-6 -left-6 h-32 w-32 rounded-3xl bg-brand-gold/10 blur-3xl" />
                         </div>
                     </div>
                 </div>
             </div>
 
             {/* Testimonials Section */}
-            <div className="bg-white dark:bg-gray-900 py-24 sm:py-32">
+            <div className="bg-white dark:bg-brand-charcoal/50 py-24 sm:py-32 border-y border-brand-border dark:border-brand-charcoal/30">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="mx-auto max-w-2xl text-center">
-                        <h2 className="text-3xl font-black tracking-tight text-gray-900 dark:text-white sm:text-4xl">Apa Kata Pelanggan Kami?</h2>
-                        <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">Kepuasan Anda adalah prioritas utama kami.</p>
+                        <p className="text-xs font-semibold tracking-widest uppercase text-brand-gold mb-3">Ulasan Pelanggan</p>
+                        <h2 className="font-serif text-3xl font-bold tracking-tight text-brand-charcoal dark:text-brand-ivory sm:text-4xl">Apa Kata Mereka?</h2>
+                        <p className="mt-4 text-base text-brand-stone dark:text-brand-ivory/50">Kepuasan Anda adalah standar kualitas kami.</p>
                     </div>
                     <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                         {[
-                            { name: 'Andi P.', role: 'Home Chef', text: 'Kualitas barang sangat memuaskan, desainnya sangat elegan dan modern.', stars: 5 },
-                            { name: 'Siska W.', role: 'Ibu Rumah Tangga', text: 'Packing sangat aman untuk barang pecah belah. Pengiriman juga tepat waktu!', stars: 5 },
-                            { name: 'Rudi H.', role: 'Interior Designer', text: 'Dapur saya jadi terlihat lebih mewah dengan produk dari Sinergi Visi. Sangat estetik.', stars: 5 },
+                            { name: 'Andi P.', role: 'Home Chef', text: 'Kualitas barang sangat memuaskan, desainnya sangat elegan dan modern. Tiap tamu yang datang pasti memuji koleksi meja makan saya.', stars: 5 },
+                            { name: 'Siska W.', role: 'Ibu Rumah Tangga', text: 'Packing sangat aman untuk barang pecah belah. Pengiriman juga tepat waktu! Sangat merekomendasikan kepada siapapun.', stars: 5 },
+                            { name: 'Rudi H.', role: 'Interior Designer', text: 'Sebagai desainer interior, saya sangat selektif. Sinergi Visi adalah satu-satunya pilihan untuk klien premium saya.', stars: 5 },
                         ].map((rev, i) => (
-                            <div key={i} className="flex flex-col justify-between rounded-3xl bg-gray-50 p-8 dark:bg-gray-800 transition-all hover:shadow-xl">
+                            <div key={i} className="flex flex-col justify-between rounded-2xl border border-brand-border bg-brand-ivory p-8 dark:bg-brand-charcoal dark:border-brand-charcoal/50 transition-all hover:shadow-lg hover:shadow-brand-gold/5">
                                 <div>
-                                    <div className="flex gap-x-1 text-yellow-400 mb-4">
-                                        {[...Array(rev.stars)].map((_, i) => (
-                                            <svg key={i} className="h-5 w-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                                    <div className="flex gap-x-1 text-brand-gold mb-4">
+                                        {[...Array(rev.stars)].map((_, idx) => (
+                                            <svg key={idx} className="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
                                         ))}
                                     </div>
-                                    <p className="text-gray-600 dark:text-gray-400 italic">"{rev.text}"</p>
+                                    <p className="text-brand-stone dark:text-brand-ivory/60 italic text-sm leading-relaxed">"{rev.text}"</p>
                                 </div>
                                 <div className="mt-8 flex items-center gap-x-4">
-                                    <div className="h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center font-bold text-blue-600">{rev.name[0]}</div>
+                                    <div className="h-10 w-10 rounded-full bg-brand-gold/10 border border-brand-gold/30 flex items-center justify-center font-bold text-brand-gold text-sm">{rev.name[0]}</div>
                                     <div>
-                                        <div className="font-bold text-gray-900 dark:text-white">{rev.name}</div>
-                                        <div className="text-sm text-gray-500">{rev.role}</div>
+                                        <div className="font-bold text-brand-charcoal dark:text-brand-ivory text-sm">{rev.name}</div>
+                                        <div className="text-xs font-medium tracking-wider uppercase text-brand-stone">{rev.role}</div>
                                     </div>
                                 </div>
                             </div>
@@ -227,29 +236,29 @@ export default function Welcome({ auth, products, categories, cs_endpoint }) {
 
             {/* Customer Service Section */}
             <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
-                <div className="relative isolate overflow-hidden bg-white dark:bg-gray-900 px-6 py-16 shadow-2xl rounded-3xl sm:px-16 md:py-24 lg:flex lg:items-center lg:gap-x-20 lg:px-24">
-                    <div className="absolute top-0 left-0 -z-10 h-full w-full opacity-10">
-                        <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
-                        <div className="absolute bottom-0 right-0 w-64 h-64 bg-indigo-500 rounded-full blur-3xl"></div>
+                <div className="relative isolate overflow-hidden bg-brand-charcoal px-6 py-16 shadow-xl rounded-2xl sm:px-16 md:py-24 lg:flex lg:items-center lg:gap-x-20 lg:px-24">
+                    <div className="absolute top-0 left-0 -z-10 h-full w-full opacity-20">
+                        <div className="absolute top-0 left-0 w-64 h-64 bg-brand-gold rounded-full blur-3xl"></div>
+                        <div className="absolute bottom-0 right-0 w-64 h-64 bg-brand-gold/50 rounded-full blur-3xl"></div>
                     </div>
-                    
+
                     <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:text-left">
-                        <h2 className="text-3xl font-black tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+                        <p className="text-xs font-semibold tracking-widest uppercase text-brand-gold mb-4">Layanan Premium</p>
+                        <h2 className="font-serif text-3xl font-bold tracking-tight text-brand-ivory sm:text-4xl">
                             Butuh Bantuan? <br />
-                            <span className="text-blue-600">Customer Service Kami Siap Membantu</span>
+                            <span className="italic text-brand-gold">Konsultan kami siap membantu.</span>
                         </h2>
-                        <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
-                            Kami di sini untuk menjawab pertanyaan Anda tentang produk, pesanan, atau pengiriman. 
-                            Dapatkan bantuan langsung dari tim profesional kami.
+                        <p className="mt-6 text-base leading-8 text-brand-ivory/60">
+                            Kami di sini untuk menjawab pertanyaan Anda tentang produk, pesanan, atau pengiriman. Dapatkan bantuan langsung dari tim profesional kami.
                         </p>
                         <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
                             <a
                                 href={cs_endpoint}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="rounded-2xl bg-blue-600 px-8 py-4 text-lg font-black text-white transition-all hover:bg-blue-700 active:scale-95 shadow-lg shadow-blue-500/30"
+                                className="rounded-xl bg-brand-gold px-8 py-4 text-base font-bold text-white transition-all hover:bg-brand-gold-dark active:scale-[0.98] shadow-lg shadow-brand-gold/30"
                             >
-                                Chat Customer Service <span aria-hidden="true">→</span>
+                                Chat Konsultan Kami <span aria-hidden="true">→</span>
                             </a>
                         </div>
                     </div>
@@ -257,46 +266,43 @@ export default function Welcome({ auth, products, categories, cs_endpoint }) {
                         <img
                             src="/images/customer-service.png"
                             alt="Customer Service Team"
-                            className="w-full max-w-lg mx-auto rounded-2xl shadow-2xl ring-1 ring-gray-400/10 dark:ring-white/10 object-cover"
+                            className="w-full max-w-lg mx-auto rounded-2xl shadow-2xl ring-1 ring-brand-ivory/10 object-cover"
                         />
                     </div>
                 </div>
             </div>
 
             {/* Footer */}
-            <footer className="border-t border-gray-100 bg-white dark:border-gray-800 dark:bg-gray-900">
-                <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+            <footer className="border-t border-brand-border bg-white dark:border-brand-charcoal/30 dark:bg-brand-charcoal">
+                <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                         <div>
-                            <span className="text-xl font-black tracking-tight text-gray-900 dark:text-white">
-                                SINERGI<span className="text-blue-600">VISI</span>
-                            </span>
-                            <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
-                                Penyedia perlengkapan pecah belah dapur terbaik di Indonesia.
-                                Kualitas terjamin, harga bersaing.
+                            <img src="/logo.png" alt="Sinergi Visi" className="h-12 w-auto mb-4" />
+                            <p className="text-sm text-brand-stone dark:text-brand-ivory/50 leading-relaxed">
+                                Kurator utama perlengkapan meja makan premium di Indonesia. Kualitas terjamin, keindahan terpilih.
                             </p>
                         </div>
                         <div className="grid grid-cols-2 gap-8 lg:col-span-2">
                             <div>
-                                <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900 dark:text-white">Navigasi</h3>
-                                <ul className="mt-4 space-y-2">
-                                    <li><Link href={route('home')} className="text-sm text-gray-600 hover:text-blue-600 dark:text-gray-400">Home</Link></li>
-                                    <li><Link href={route('products.index')} className="text-sm text-gray-600 hover:text-blue-600 dark:text-gray-400">Produk</Link></li>
+                                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-charcoal dark:text-brand-ivory mb-4">Navigasi</h3>
+                                <ul className="space-y-2">
+                                    <li><Link href={route('home')} className="text-sm text-brand-stone hover:text-brand-gold dark:text-brand-ivory/50 dark:hover:text-brand-gold transition-colors">Home</Link></li>
+                                    <li><Link href={route('products.index')} className="text-sm text-brand-stone hover:text-brand-gold dark:text-brand-ivory/50 dark:hover:text-brand-gold transition-colors">Koleksi Produk</Link></li>
                                 </ul>
                             </div>
                             <div>
-                                <h3 className="text-sm font-bold uppercase tracking-wider text-gray-900 dark:text-white">Kontak</h3>
-                                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                                <h3 className="text-xs font-bold uppercase tracking-widest text-brand-charcoal dark:text-brand-ivory mb-4">Kontak</h3>
+                                <ul className="space-y-2 text-sm text-brand-stone dark:text-brand-ivory/50">
                                     <li>Email: info@sinergivisi.com</li>
                                     <li>Telp: +62 812 3456 7890</li>
-                                    <li>Alamat: Surabaya, Jawa Timur</li>
+                                    <li>Surabaya, Jawa Timur</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div className="mt-12 border-t border-gray-100 pt-8 dark:border-gray-800">
-                        <p className="text-center text-xs text-gray-500 dark:text-gray-400">
-                            &copy; 2026 Sinergi Visi Ecommerce. All rights reserved.
+                    <div className="mt-12 border-t border-brand-border pt-8 dark:border-brand-charcoal/30">
+                        <p className="text-center text-xs text-brand-stone dark:text-brand-ivory/30">
+                            &copy; 2026 Sinergi Visi. Fine Glassware & Ceramics. All rights reserved.
                         </p>
                     </div>
                 </div>

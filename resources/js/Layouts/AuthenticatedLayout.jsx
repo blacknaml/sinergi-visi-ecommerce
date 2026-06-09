@@ -12,20 +12,16 @@ export default function AuthenticatedLayout({ header, children }) {
         useState(false);
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
-            <nav className="sticky top-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-md dark:border-gray-800 dark:bg-gray-900/80 shadow-sm">
+        <div className="min-h-screen bg-brand-ivory dark:bg-brand-charcoal">
+            <nav className="sticky top-0 z-50 border-b border-brand-border bg-brand-ivory/80 backdrop-blur-md dark:border-brand-charcoal/30 dark:bg-brand-charcoal/90 shadow-sm">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 justify-between">
                         <div className="flex">
                             <div className="flex shrink-0 items-center">
                                 <Link href="/" className="flex items-center gap-2">
-                                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-lg shadow-blue-200">
-                                        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                                        </svg>
-                                    </div>
-                                    <span className="hidden sm:block text-xl font-black tracking-tight text-gray-900 dark:text-white">
-                                        SINERGI<span className="text-blue-600">VISI</span>
+                                    <img src="/logo.png" alt="Sinergi Visi" className="h-9 w-auto" />
+                                    <span className="hidden sm:block text-xl font-black tracking-tight text-brand-charcoal dark:text-brand-ivory">
+                                        SINERGI<span className="text-brand-gold">VISI</span>
                                     </span>
                                 </Link>
                             </div>
@@ -34,14 +30,14 @@ export default function AuthenticatedLayout({ header, children }) {
                                 <NavLink
                                     href={route('dashboard')}
                                     active={route().current('dashboard')}
-                                    className="font-bold hover:text-blue-600"
+                                    className="font-bold hover:text-brand-gold transition-colors"
                                 >
                                     Dashboard
                                 </NavLink>
                                 <NavLink
                                     href={route('products.index')}
                                     active={route().current('products.*')}
-                                    className="font-bold hover:text-blue-600"
+                                    className="font-bold hover:text-brand-gold transition-colors"
                                 >
                                     Katalog Produk
                                 </NavLink>
@@ -52,7 +48,7 @@ export default function AuthenticatedLayout({ header, children }) {
                             {/* Cart Icon */}
                             <Link
                                 href={route('cart.index')}
-                                className="mr-4 flex h-10 w-10 items-center justify-center rounded-xl bg-gray-50 text-gray-500 transition-all hover:bg-gray-100 hover:text-blue-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-blue-400"
+                                className="mr-4 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-sand text-brand-stone transition-all hover:bg-brand-gold hover:text-white dark:bg-brand-charcoal/50 dark:text-brand-ivory/60 dark:hover:bg-brand-gold dark:hover:text-white"
                             >
                                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -65,7 +61,7 @@ export default function AuthenticatedLayout({ header, children }) {
                                         <span className="inline-flex rounded-md">
                                             <button
                                                 type="button"
-                                                className="inline-flex items-center rounded-xl border border-gray-200 bg-white/50 px-4 py-2 text-sm font-bold leading-4 text-gray-700 transition duration-150 ease-in-out hover:bg-gray-50 hover:text-blue-600 focus:outline-none dark:border-gray-700 dark:bg-gray-800/50 dark:text-gray-300 dark:hover:text-white"
+                                                className="inline-flex items-center rounded-xl border border-brand-border bg-brand-sand/60 px-4 py-2 text-sm font-bold leading-4 text-brand-charcoal transition duration-150 ease-in-out hover:bg-brand-sand hover:text-brand-gold focus:outline-none dark:border-brand-charcoal/30 dark:bg-brand-charcoal/50 dark:text-brand-ivory dark:hover:text-brand-gold"
                                             >
                                                 {user.name}
 
@@ -114,7 +110,7 @@ export default function AuthenticatedLayout({ header, children }) {
                         <div className="-me-2 flex items-center gap-2 sm:hidden">
                             <Link
                                 href={route('cart.index')}
-                                className="flex h-10 w-10 items-center justify-center rounded-md text-gray-400 hover:bg-gray-100 hover:text-blue-600"
+                                className="flex h-10 w-10 items-center justify-center rounded-md text-brand-stone hover:bg-brand-sand hover:text-brand-gold"
                             >
                                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -166,7 +162,7 @@ export default function AuthenticatedLayout({ header, children }) {
                 <div
                     className={
                         (showingNavigationDropdown ? 'block' : 'hidden') +
-                        ' sm:hidden border-t border-gray-100 bg-white'
+                        ' sm:hidden border-t border-brand-border bg-brand-ivory'
                     }
                 >
                     <div className="space-y-1 pb-3 pt-2">
@@ -217,7 +213,7 @@ export default function AuthenticatedLayout({ header, children }) {
             </nav>
 
             {header && (
-                <header className="bg-white/50 backdrop-blur-sm border-b border-gray-100 shadow-sm dark:bg-gray-900/50 dark:border-gray-800">
+                <header className="bg-brand-sand/50 backdrop-blur-sm border-b border-brand-border shadow-sm dark:bg-brand-charcoal/50 dark:border-brand-charcoal/30">
                     <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                         {header}
                     </div>

@@ -14,6 +14,18 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                serif: ['Cormorant Garamond', 'Playfair Display', ...defaultTheme.fontFamily.serif],
+            },
+            colors: {
+                brand: {
+                    gold: '#C5A85A',
+                    'gold-dark': '#8E753B',
+                    charcoal: '#1C1C1A',
+                    ivory: '#FAF9F5',
+                    sand: '#F3F1EB',
+                    stone: '#78716C',
+                    border: '#EAE8E2',
+                },
             },
             animation: {
                 blob: "blob 7s infinite",
