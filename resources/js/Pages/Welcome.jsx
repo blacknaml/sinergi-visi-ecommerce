@@ -19,7 +19,7 @@ export default function Welcome({ auth, products, categories, cs_endpoint }) {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
                     <div className="text-center">
                         <p className="text-xs font-semibold tracking-widest uppercase text-brand-gold mb-4">Fine Glassware & Ceramics</p>
-                        <h1 className="font-serif text-5xl font-bold tracking-tight text-brand-charcoal sm:text-7xl dark:text-brand-ivory leading-tight">
+                        <h1 className="font-serif text-4xl font-bold tracking-tight text-brand-charcoal sm:text-7xl dark:text-brand-ivory leading-tight">
                             Seni Meja Makan <br />
                             <span className="italic text-brand-gold">yang Sesungguhnya</span>
                         </h1>
