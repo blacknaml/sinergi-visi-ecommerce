@@ -1,5 +1,6 @@
 import { Link } from '@inertiajs/react';
 import { useState } from 'react';
+import ApplicationLogo from '@/Components/ApplicationLogo';
 
 export default function AdminLayout({ auth, children }) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -18,7 +19,7 @@ export default function AdminLayout({ auth, children }) {
             <aside className={`fixed left-0 top-0 z-40 h-screen w-64 transition-transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} border-r border-brand-border bg-white dark:border-brand-stone/30 dark:bg-[#252523]`}>
                 <div className="flex h-16 items-center border-b border-brand-border px-6 dark:border-brand-stone/20">
                     <Link href="/" className="flex items-center gap-3">
-                        <img src="/logo.png" alt="Sinergi Visi" className="h-8 w-auto" />
+                        <ApplicationLogo className="h-8 w-8" />
                         <span className="text-lg font-black tracking-tight text-brand-charcoal dark:text-brand-ivory">ADMIN<span className="text-brand-gold">SV</span></span>
                     </Link>
                 </div>

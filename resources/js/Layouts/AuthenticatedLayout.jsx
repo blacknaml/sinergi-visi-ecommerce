@@ -19,7 +19,7 @@ export default function AuthenticatedLayout({ header, children }) {
                         <div className="flex">
                             <div className="flex shrink-0 items-center">
                                 <Link href="/" className="flex items-center gap-2">
-                                    <img src="/logo.png" alt="Sinergi Visi" className="h-9 w-auto" />
+                                    <ApplicationLogo className="h-9 w-9" />
                                     <span className="hidden sm:block text-xl font-black tracking-tight text-brand-charcoal dark:text-brand-ivory">
                                         SINERGI<span className="text-brand-gold">VISI</span>
                                     </span>

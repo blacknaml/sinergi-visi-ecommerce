@@ -1,4 +1,5 @@
 import { Link } from '@inertiajs/react';
+import ApplicationLogo from '@/Components/ApplicationLogo';
 
 export default function GuestLayout({ children }) {
     return (
@@ -11,7 +12,7 @@ export default function GuestLayout({ children }) {
             <div className="relative w-full max-w-md px-6 z-10">
                 <div className="text-center mb-8">
                     <Link href="/" className="inline-flex flex-col items-center gap-2">
-                        <img src="/logo.png" alt="Sinergi Visi" className="h-16 w-auto" />
+                        <ApplicationLogo className="h-16 w-16" />
                         <span className="text-xs font-semibold tracking-widest uppercase text-brand-stone dark:text-brand-ivory/60">Fine Glassware & Ceramics</span>
                     </Link>
                 </div>

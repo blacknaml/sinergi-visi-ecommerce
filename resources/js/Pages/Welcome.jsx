@@ -1,6 +1,7 @@
 import { Head, Link } from '@inertiajs/react';
 import Navbar from '@/Components/Navbar';
 import ProductCard from '@/Components/ProductCard';
+import ApplicationLogo from '@/Components/ApplicationLogo';
 
 export default function Welcome({ auth, products, categories, cs_endpoint }) {
     return (
@@ -277,7 +278,7 @@ export default function Welcome({ auth, products, categories, cs_endpoint }) {
                 <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                         <div>
-                            <img src="/logo.png" alt="Sinergi Visi" className="h-12 w-auto mb-4" />
+                            <ApplicationLogo className="h-12 w-12 mb-4" />
                             <p className="text-sm text-brand-stone dark:text-brand-ivory/50 leading-relaxed">
                                 Kurator utama perlengkapan meja makan premium di Indonesia. Kualitas terjamin, keindahan terpilih.
                             </p>
