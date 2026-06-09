@@ -15,8 +15,8 @@ export default function AdminLayout({ auth, children }) {
     return (
         <div className="min-h-screen bg-brand-ivory dark:bg-brand-charcoal">
             {/* Sidebar */}
-            <aside className={`fixed left-0 top-0 z-40 h-screen w-64 transition-transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} border-r border-brand-border bg-white dark:border-brand-charcoal/30 dark:bg-brand-charcoal`}>
-                <div className="flex h-16 items-center border-b border-brand-border px-6 dark:border-brand-charcoal/30">
+            <aside className={`fixed left-0 top-0 z-40 h-screen w-64 transition-transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} border-r border-brand-border bg-white dark:border-brand-stone/30 dark:bg-[#252523]`}>
+                <div className="flex h-16 items-center border-b border-brand-border px-6 dark:border-brand-stone/20">
                     <Link href="/" className="flex items-center gap-3">
                         <img src="/logo.png" alt="Sinergi Visi" className="h-8 w-auto" />
                         <span className="text-lg font-black tracking-tight text-brand-charcoal dark:text-brand-ivory">ADMIN<span className="text-brand-gold">SV</span></span>
@@ -29,7 +29,7 @@ export default function AdminLayout({ auth, children }) {
                             href={item.href}
                             className={`flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold transition-all ${
                                 route().current(item.routeName)
-                                ? 'bg-brand-sand text-brand-gold dark:bg-brand-charcoal/50 dark:text-brand-gold'
+                                ? 'bg-brand-sand text-brand-gold dark:bg-brand-charcoal/80 dark:text-brand-gold'
                                 : 'text-brand-stone hover:bg-brand-sand dark:text-brand-ivory/60 dark:hover:bg-brand-charcoal/50'
                             }`}
                         >
@@ -37,7 +37,7 @@ export default function AdminLayout({ auth, children }) {
                         </Link>
                     ))}
                 </div>
-                <div className="absolute bottom-0 w-full border-t border-brand-border p-4 dark:border-brand-charcoal/30">
+                <div className="absolute bottom-0 w-full border-t border-brand-border p-4 dark:border-brand-stone/20">
                     <div className="flex items-center gap-3">
                         <div className="h-8 w-8 rounded-full bg-brand-sand dark:bg-brand-charcoal/50 border border-brand-gold/30 flex items-center justify-center font-bold text-brand-gold text-xs">
                             {auth.user.name[0]}

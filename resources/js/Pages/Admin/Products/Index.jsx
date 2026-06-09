@@ -70,7 +70,6 @@ export default function Index({ auth, products, categories }) {
         if (window.confirm('Apakah Anda yakin ingin menghapus gambar ini?')) {
             router.delete(route('admin.products.images.destroy', imageId), {
                 onSuccess: () => {
-                    // Update editingProduct state to remove the deleted image from UI
                     if (editingProduct) {
                         setEditingProduct({
                             ...editingProduct,
@@ -86,22 +85,22 @@ export default function Index({ auth, products, categories }) {
         <AdminLayout auth={auth}>
             <Head title="Manajemen Produk" />
 
-            <div className="mb-8 flex items-center justify-between">
+            <div className="mb-8 flex items-center justify-between border-b border-brand-border pb-4 dark:border-brand-charcoal/30">
                 <div>
-                    <h1 className="text-2xl font-black text-gray-900 dark:text-white">Manajemen Produk</h1>
-                    <p className="text-gray-500">Kelola katalog produk Sinergi Visi Ecommerce.</p>
+                    <h1 className="font-serif text-3xl font-bold text-brand-charcoal dark:text-brand-ivory">Manajemen Produk</h1>
+                    <p className="text-sm text-brand-stone dark:text-brand-ivory/50">Kelola katalog produk Sinergi Visi Ecommerce.</p>
                 </div>
                 <button
                     onClick={openCreateModal}
-                    className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-200 transition-all hover:bg-blue-700"
+                    className="inline-flex items-center justify-center rounded-xl bg-brand-gold px-5 py-3 text-xs font-bold text-white shadow-md shadow-brand-gold/20 transition-all hover:bg-brand-gold-dark active:scale-[0.98]"
                 >
                     + Tambah Produk
                 </button>
             </div>
 
-            <div className="overflow-hidden rounded-3xl bg-white shadow-sm dark:bg-gray-900">
-                <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-                    <thead className="bg-gray-50 text-xs font-bold uppercase tracking-wider text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+            <div className="overflow-hidden rounded-3xl bg-white border border-brand-border shadow-sm dark:bg-[#252523] dark:border-brand-stone/30">
+                <table className="w-full text-left text-sm text-brand-stone dark:text-brand-ivory/60">
+                    <thead className="bg-brand-sand text-xs font-bold uppercase tracking-wider text-brand-charcoal dark:bg-brand-charcoal/75 dark:text-brand-ivory">
                         <tr>
                             <th className="px-6 py-4">Gambar</th>
                             <th className="px-6 py-4">Nama Produk</th>
@@ -111,30 +110,30 @@ export default function Index({ auth, products, categories }) {
                             <th className="px-6 py-4">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+                    <tbody className="divide-y divide-brand-border dark:divide-brand-charcoal/30">
                         {products && products.length > 0 ? products.map((product) => (
-                            <tr key={product.id} className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
+                            <tr key={product.id} className="hover:bg-brand-sand/30 dark:hover:bg-brand-charcoal/30 transition-colors">
                                 <td className="px-6 py-4">
                                     {product.main_image ? (
-                                        <img src={`/storage/${product.main_image}`} alt={product.name} className="h-12 w-12 rounded object-cover" />
+                                        <img src={`/storage/${product.main_image}`} alt={product.name} className="h-12 w-12 rounded object-cover border border-brand-border dark:border-brand-charcoal/30" />
                                     ) : (
-                                        <div className="h-12 w-12 rounded bg-gray-200 flex items-center justify-center text-xs text-gray-400">No Img</div>
+                                        <div className="h-12 w-12 rounded bg-brand-sand flex items-center justify-center text-xs text-brand-gold font-bold">No Img</div>
                                     )}
                                 </td>
-                                <td className="px-6 py-4 font-bold text-gray-900 dark:text-white">{product.name}</td>
+                                <td className="px-6 py-4 font-bold text-brand-charcoal dark:text-brand-ivory">{product.name}</td>
                                 <td className="px-6 py-4">{product.category ? product.category.name : '-'}</td>
-                                <td className="px-6 py-4">Rp {product.price}</td>
+                                <td className="px-6 py-4 font-semibold text-brand-charcoal dark:text-brand-ivory">Rp {new Intl.NumberFormat('id-ID').format(product.price)}</td>
                                 <td className="px-6 py-4">{product.stock}</td>
                                 <td className="px-6 py-4">
                                     <button 
                                         onClick={() => openEditModal(product)}
-                                        className="text-blue-600 hover:underline mr-3 font-medium"
+                                        className="text-brand-gold hover:text-brand-gold-dark mr-4 font-bold transition-colors"
                                     >
                                         Edit
                                     </button>
                                     <button 
                                         onClick={() => deleteProduct(product.id)}
-                                        className="text-red-600 hover:underline font-medium"
+                                        className="text-red-600 hover:text-red-800 font-bold transition-colors"
                                     >
                                         Hapus
                                     </button>
@@ -142,7 +141,7 @@ export default function Index({ auth, products, categories }) {
                             </tr>
                         )) : (
                             <tr>
-                                <td colSpan="6" className="px-6 py-4 text-center">Belum ada produk.</td>
+                                <td colSpan="6" className="px-6 py-8 text-center text-brand-stone dark:text-brand-ivory/50">Belum ada produk.</td>
                             </tr>
                         )}
                     </tbody>
@@ -150,20 +149,20 @@ export default function Index({ auth, products, categories }) {
             </div>
 
             {isModalOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm overflow-y-auto pt-24 pb-12">
-                    <div className="w-full max-w-md rounded-3xl bg-white p-8 dark:bg-gray-900 my-auto">
-                        <h2 className="mb-6 text-xl font-bold text-gray-900 dark:text-white">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-brand-charcoal/50 p-4 backdrop-blur-sm overflow-y-auto pt-24 pb-12">
+                    <div className="w-full max-w-lg rounded-3xl bg-white border border-brand-border p-8 dark:bg-brand-charcoal dark:border-brand-charcoal/50 shadow-2xl my-auto">
+                        <h2 className="mb-6 font-serif text-2xl font-bold text-brand-charcoal dark:text-brand-ivory">
                             {editingProduct ? 'Edit Produk' : 'Tambah Produk Baru'}
                         </h2>
                         <form onSubmit={submit} className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Upload Gambar Baru (Bisa lebih dari satu)</label>
+                                <label className="block text-xs font-bold uppercase tracking-wider text-brand-stone dark:text-brand-ivory/60 mb-2">Upload Gambar Baru (Bisa lebih dari satu)</label>
                                 <input
                                     type="file"
                                     accept="image/*"
                                     multiple
                                     onChange={(e) => setData('images', Array.from(e.target.files))}
-                                    className="mt-1 w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                                    className="mt-1 w-full text-xs text-brand-stone file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-brand-sand file:text-brand-gold hover:file:bg-brand-gold hover:file:text-white transition-all cursor-pointer"
                                 />
                                 {errors.images && <p className="mt-1 text-xs text-red-500">{errors.images}</p>}
                                 
@@ -171,17 +170,17 @@ export default function Index({ auth, products, categories }) {
                                 {data.images && data.images.length > 0 && !editingProduct && (
                                     <div className="mt-4 grid grid-cols-3 gap-4">
                                         {Array.from(data.images).map((file, idx) => (
-                                            <div key={idx} className={`relative rounded-xl border-2 p-2 ${data.main_image_index === idx ? 'border-blue-500 bg-blue-50' : 'border-gray-200'}`}>
+                                            <div key={idx} className={`relative rounded-xl border-2 p-2 ${data.main_image_index === idx ? 'border-brand-gold bg-brand-sand/30' : 'border-brand-border dark:border-brand-charcoal/30'}`}>
                                                 <img src={URL.createObjectURL(file)} className="h-24 w-full object-cover rounded-lg" alt="preview" />
-                                                <label className="mt-2 flex items-center gap-2 text-xs font-bold text-gray-700 cursor-pointer">
+                                                <label className="mt-2 flex items-center gap-2 text-[10px] font-bold text-brand-stone dark:text-brand-ivory/60 cursor-pointer">
                                                     <input 
                                                         type="radio" 
                                                         name="main_image_new" 
                                                         checked={data.main_image_index === idx}
                                                         onChange={() => setData('main_image_index', idx)}
-                                                        className="text-blue-600 focus:ring-blue-500"
+                                                        className="text-brand-gold focus:ring-brand-gold"
                                                     />
-                                                    Jadikan Utama
+                                                    Utama
                                                 </label>
                                             </div>
                                         ))}
@@ -191,18 +190,18 @@ export default function Index({ auth, products, categories }) {
                                 {/* Existing Images Management (Edit Mode) */}
                                 {editingProduct && editingProduct.images && editingProduct.images.length > 0 && (
                                     <div className="mt-6">
-                                        <p className="text-sm font-bold text-gray-700 mb-2">Gambar Saat Ini:</p>
+                                        <p className="text-xs font-bold uppercase tracking-wider text-brand-stone dark:text-brand-ivory/60 mb-3">Gambar Saat Ini:</p>
                                         <div className="grid grid-cols-4 gap-4">
                                             {editingProduct.images.map(img => (
-                                                <div key={img.id} className={`relative rounded-xl border-2 p-2 ${data.main_image_id === img.id || (img.is_main && !data.main_image_id) ? 'border-blue-500 bg-blue-50' : 'border-gray-200'}`}>
+                                                <div key={img.id} className={`relative rounded-xl border-2 p-2 ${data.main_image_id === img.id || (img.is_main && !data.main_image_id) ? 'border-brand-gold bg-brand-sand/30' : 'border-brand-border dark:border-brand-charcoal/30'}`}>
                                                     <img src={`/storage/${img.image_path}`} className="h-20 w-full object-cover rounded-lg" alt="saved" />
-                                                    <label className="mt-2 flex items-center gap-1 text-[10px] font-bold text-gray-700 cursor-pointer">
+                                                    <label className="mt-2 flex items-center gap-1 text-[10px] font-bold text-brand-stone dark:text-brand-ivory/60 cursor-pointer">
                                                         <input 
                                                             type="radio" 
                                                             name="main_image_exist" 
                                                             checked={data.main_image_id === img.id || (img.is_main && !data.main_image_id)}
                                                             onChange={() => setData('main_image_id', img.id)}
-                                                            className="text-blue-600 focus:ring-blue-500"
+                                                            className="text-brand-gold focus:ring-brand-gold"
                                                         />
                                                         Utama
                                                     </label>
@@ -220,43 +219,43 @@ export default function Index({ auth, products, categories }) {
                                 )}
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Nama Produk</label>
+                                <label className="block text-xs font-bold uppercase tracking-wider text-brand-stone dark:text-brand-ivory/60">Nama Produk</label>
                                 <input
                                     type="text"
                                     value={data.name}
                                     onChange={(e) => setData('name', e.target.value)}
-                                    className="mt-1 w-full rounded-xl border-gray-200 dark:border-gray-800 dark:bg-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                                    className="mt-1.5 w-full rounded-xl border-brand-border dark:border-brand-charcoal/50 dark:bg-brand-charcoal dark:text-brand-ivory focus:border-brand-gold focus:ring-brand-gold"
                                 />
                                 {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Harga</label>
+                                    <label className="block text-xs font-bold uppercase tracking-wider text-brand-stone dark:text-brand-ivory/60">Harga</label>
                                     <input
                                         type="number"
                                         value={data.price}
                                         onChange={(e) => setData('price', e.target.value)}
-                                        className="mt-1 w-full rounded-xl border-gray-200 dark:border-gray-800 dark:bg-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                                        className="mt-1.5 w-full rounded-xl border-brand-border dark:border-brand-charcoal/50 dark:bg-brand-charcoal dark:text-brand-ivory focus:border-brand-gold focus:ring-brand-gold"
                                     />
                                     {errors.price && <p className="mt-1 text-xs text-red-500">{errors.price}</p>}
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Stok</label>
+                                    <label className="block text-xs font-bold uppercase tracking-wider text-brand-stone dark:text-brand-ivory/60">Stok</label>
                                     <input
                                         type="number"
                                         value={data.stock}
                                         onChange={(e) => setData('stock', e.target.value)}
-                                        className="mt-1 w-full rounded-xl border-gray-200 dark:border-gray-800 dark:bg-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                                        className="mt-1.5 w-full rounded-xl border-brand-border dark:border-brand-charcoal/50 dark:bg-brand-charcoal dark:text-brand-ivory focus:border-brand-gold focus:ring-brand-gold"
                                     />
                                     {errors.stock && <p className="mt-1 text-xs text-red-500">{errors.stock}</p>}
                                 </div>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Kategori</label>
+                                <label className="block text-xs font-bold uppercase tracking-wider text-brand-stone dark:text-brand-ivory/60">Kategori</label>
                                 <select
                                     value={data.category_id}
                                     onChange={(e) => setData('category_id', e.target.value)}
-                                    className="mt-1 w-full rounded-xl border-gray-200 dark:border-gray-800 dark:bg-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                                    className="mt-1.5 w-full rounded-xl border-brand-border dark:border-brand-charcoal/50 dark:bg-brand-charcoal dark:text-brand-ivory focus:border-brand-gold focus:ring-brand-gold"
                                 >
                                     <option value="">Pilih Kategori</option>
                                     {categories && categories.length > 0 ? categories.map((cat) => (
@@ -266,31 +265,31 @@ export default function Index({ auth, products, categories }) {
                                 {errors.category_id && <p className="mt-1 text-xs text-red-500">{errors.category_id}</p>}
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Deskripsi</label>
+                                <label className="block text-xs font-bold uppercase tracking-wider text-brand-stone dark:text-brand-ivory/60">Deskripsi</label>
                                 <textarea
                                     value={data.description}
                                     onChange={(e) => setData('description', e.target.value)}
                                     rows="3"
-                                    className="mt-1 w-full rounded-xl border-gray-200 dark:border-gray-800 dark:bg-gray-800 dark:text-white focus:border-blue-500 focus:ring-blue-500"
+                                    className="mt-1.5 w-full rounded-xl border-brand-border dark:border-brand-charcoal/50 dark:bg-brand-charcoal dark:text-brand-ivory focus:border-brand-gold focus:ring-brand-gold"
                                     placeholder="Tulis deskripsi produk di sini..."
                                 ></textarea>
                                 {errors.description && <p className="mt-1 text-xs text-red-500">{errors.description}</p>}
                             </div>
-                            <div className="flex justify-end gap-3 pt-4">
+                            <div className="flex justify-end gap-3 pt-4 border-t border-brand-border dark:border-brand-charcoal/30">
                                 <button
                                     type="button"
                                     onClick={() => {
                                         setIsModalOpen(false);
                                         setEditingProduct(null);
                                     }}
-                                    className="rounded-xl px-4 py-2 text-sm font-bold text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800"
+                                    className="rounded-xl px-5 py-2.5 text-xs font-bold text-brand-stone hover:bg-brand-sand dark:hover:bg-brand-charcoal/80 dark:text-brand-ivory/60 transition-colors"
                                 >
                                     Batal
                                 </button>
                                 <button
                                     type="submit"
                                     disabled={processing}
-                                    className="rounded-xl bg-blue-600 px-6 py-2 text-sm font-bold text-white shadow-lg shadow-blue-200"
+                                    className="rounded-xl bg-brand-gold px-6 py-2.5 text-xs font-bold text-white shadow-md shadow-brand-gold/20 hover:bg-brand-gold-dark transition-colors"
                                 >
                                     Simpan
                                 </button>

@@ -13,7 +13,7 @@ export default function Index({ auth, orders }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="space-y-6">
                         {orders.length > 0 ? orders.map((order) => (
-                            <div key={order.id} className="overflow-hidden bg-white border border-brand-border shadow-sm sm:rounded-3xl dark:bg-brand-charcoal dark:border-brand-charcoal/50">
+                            <div key={order.id} className="overflow-hidden bg-white border border-brand-border shadow-sm sm:rounded-3xl dark:bg-[#252523] dark:border-brand-stone/30">
                                 <div className="p-6">
                                     <div className="mb-4 flex items-center justify-between">
                                         <div>
@@ -35,11 +35,10 @@ export default function Index({ auth, orders }) {
                                             <p className="mt-1.5 text-xs font-semibold text-brand-stone dark:text-brand-ivory/40">{new Date(order.created_at).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                                         </div>
                                     </div>
-                                    
-                                    <div className="flex flex-col gap-4 border-t border-brand-border pt-4 dark:border-brand-charcoal/30">
+                                                                        <div className="flex flex-col gap-4 border-t border-brand-border pt-4 dark:border-brand-stone/30">
                                         {order.items.map((item) => (
                                             <div key={item.id} className="flex items-center gap-4">
-                                                <img src={item.product.main_image ? `/storage/${item.product.main_image}` : 'https://via.placeholder.com/150'} alt={item.product.name} className="h-16 w-16 rounded-xl object-cover border border-brand-border dark:border-brand-charcoal/30" />
+                                                <img src={item.product.main_image ? `/storage/${item.product.main_image}` : 'https://via.placeholder.com/150'} alt={item.product.name} className="h-16 w-16 rounded-xl object-cover border border-brand-border dark:border-brand-stone/30" />
                                                 <div className="flex-1">
                                                     <p className="font-bold text-brand-charcoal dark:text-brand-ivory">{item.product.name}</p>
                                                     <p className="text-sm text-brand-stone dark:text-brand-ivory/60">{item.quantity} x Rp {new Intl.NumberFormat('id-ID').format(item.price)}</p>
@@ -48,7 +47,7 @@ export default function Index({ auth, orders }) {
                                         ))}
                                     </div>
 
-                                    <div className="mt-6 flex items-center justify-between border-t border-brand-border pt-6 dark:border-brand-charcoal/30">
+                                    <div className="mt-6 flex items-center justify-between border-t border-brand-border pt-6 dark:border-brand-stone/30">
                                         <div>
                                             <p className="text-xs text-brand-stone uppercase font-bold dark:text-brand-ivory/40">Total Pembayaran</p>
                                             <p className="text-xl font-extrabold text-brand-gold mt-1">Rp {new Intl.NumberFormat('id-ID').format(order.total_price)}</p>

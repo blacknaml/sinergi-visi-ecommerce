@@ -3,14 +3,14 @@ import { Head, Link } from '@inertiajs/react';
 
 function StatCard({ title, value, color }) {
     const colors = {
-        gold: 'bg-brand-sand text-brand-gold dark:bg-brand-charcoal/50 dark:text-brand-gold border border-brand-gold/20',
-        charcoal: 'bg-brand-charcoal text-brand-ivory border border-brand-charcoal/50',
-        stone: 'bg-brand-sand text-brand-stone dark:bg-brand-charcoal/50 dark:text-brand-ivory/60 border border-brand-border',
-        border: 'bg-brand-ivory text-brand-gold dark:bg-brand-charcoal border border-brand-border',
+        gold: 'bg-brand-sand text-brand-gold dark:bg-brand-charcoal/70 dark:text-brand-gold border border-brand-gold/20',
+        charcoal: 'bg-brand-charcoal text-brand-ivory border border-brand-charcoal/50 dark:bg-brand-charcoal/90',
+        stone: 'bg-brand-sand text-brand-stone dark:bg-brand-charcoal/70 dark:text-brand-ivory/60 border border-brand-border dark:border-brand-charcoal/40',
+        border: 'bg-brand-ivory text-brand-gold dark:bg-brand-charcoal/70 border border-brand-border dark:border-brand-charcoal/40',
     };
 
     return (
-        <div className="rounded-3xl bg-white p-6 shadow-sm border border-brand-border dark:bg-brand-charcoal dark:border-brand-charcoal/50">
+        <div className="rounded-3xl bg-white p-6 shadow-sm border border-brand-border dark:bg-[#252523] dark:border-brand-stone/30">
             <div className="flex items-center gap-4">
                 <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${colors[color] || colors.gold}`}>
                     {/* Simplified icon placeholder */}
@@ -30,7 +30,7 @@ export default function Dashboard({ auth, stats, recentOrders }) {
         <AdminLayout auth={auth}>
             <Head title="Admin Dashboard" />
             
-            <div className="mb-8">
+            <div className="mb-8 border-b border-brand-border pb-4 dark:border-brand-charcoal/30">
                 <h1 className="font-serif text-3xl font-bold text-brand-charcoal dark:text-brand-ivory">Statistik Toko</h1>
                 <p className="text-sm text-brand-stone dark:text-brand-ivory/50">Ringkasan performa Sinergi Visi Ecommerce hari ini.</p>
             </div>
@@ -47,7 +47,7 @@ export default function Dashboard({ auth, stats, recentOrders }) {
                     <h2 className="text-xl font-bold text-brand-charcoal dark:text-brand-ivory">Pesanan Terbaru</h2>
                     <Link href={route('admin.reports')} className="text-xs font-bold text-brand-gold hover:text-brand-gold-dark border-b border-brand-gold/30 hover:border-brand-gold transition-all">Lihat Semua →</Link>
                 </div>
-                <div className="overflow-hidden rounded-3xl bg-white border border-brand-border shadow-sm dark:bg-brand-charcoal dark:border-brand-charcoal/50">
+                <div className="overflow-hidden rounded-3xl bg-white border border-brand-border shadow-sm dark:bg-[#252523] dark:border-brand-stone/30">
                     <table className="w-full text-left text-sm text-brand-stone dark:text-brand-ivory/60">
                         <thead className="bg-brand-sand text-xs font-bold uppercase tracking-wider text-brand-charcoal dark:bg-brand-charcoal/75 dark:text-brand-ivory">
                             <tr>

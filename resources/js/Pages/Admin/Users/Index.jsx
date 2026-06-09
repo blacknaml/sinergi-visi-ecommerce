@@ -6,14 +6,14 @@ export default function Index({ auth, users }) {
         <AdminLayout auth={auth}>
             <Head title="Manajemen User" />
 
-            <div className="mb-8">
-                <h1 className="text-2xl font-black text-gray-900 dark:text-white">Manajemen User</h1>
-                <p className="text-gray-500">Kelola pembeli yang terdaftar di Sinergi Visi Ecommerce.</p>
+            <div className="mb-8 border-b border-brand-border pb-4 dark:border-brand-charcoal/30">
+                <h1 className="font-serif text-3xl font-bold text-brand-charcoal dark:text-brand-ivory">Manajemen User</h1>
+                <p className="text-sm text-brand-stone dark:text-brand-ivory/50">Kelola pembeli yang terdaftar di Sinergi Visi Ecommerce.</p>
             </div>
 
-            <div className="overflow-hidden rounded-3xl bg-white shadow-sm dark:bg-gray-900">
-                <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-                    <thead className="bg-gray-50 text-xs font-bold uppercase tracking-wider text-gray-700 dark:bg-gray-800 dark:text-gray-300">
+            <div className="overflow-hidden rounded-3xl bg-white border border-brand-border shadow-sm dark:bg-[#252523] dark:border-brand-stone/30">
+                <table className="w-full text-left text-sm text-brand-stone dark:text-brand-ivory/60">
+                    <thead className="bg-brand-sand text-xs font-bold uppercase tracking-wider text-brand-charcoal dark:bg-brand-charcoal/75 dark:text-brand-ivory">
                         <tr>
                             <th className="px-6 py-4">Nama</th>
                             <th className="px-6 py-4">Email</th>
@@ -21,15 +21,15 @@ export default function Index({ auth, users }) {
                             <th className="px-6 py-4">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-100 dark:divide-gray-800">
+                    <tbody className="divide-y divide-brand-border dark:divide-brand-charcoal/30">
                         {users.map((user) => (
-                            <tr key={user.id} className="hover:bg-gray-50 dark:hover:bg-gray-800/50">
-                                <td className="px-6 py-4 font-bold text-gray-900 dark:text-white">{user.name}</td>
+                            <tr key={user.id} className="hover:bg-brand-sand/30 dark:hover:bg-brand-charcoal/30 transition-colors">
+                                <td className="px-6 py-4 font-bold text-brand-charcoal dark:text-brand-ivory">{user.name}</td>
                                 <td className="px-6 py-4">{user.email}</td>
                                 <td className="px-6 py-4">{user.phone || '-'}</td>
                                 <td className="px-6 py-4">
-                                    <button className="text-blue-600 hover:underline mr-3">Profil</button>
-                                    <button className="text-red-600 hover:underline">Hapus</button>
+                                    <button className="text-brand-gold hover:text-brand-gold-dark font-bold mr-4 transition-colors">Profil</button>
+                                    <button className="text-red-600 hover:text-red-800 font-bold transition-colors">Hapus</button>
                                 </td>
                             </tr>
                         ))}
